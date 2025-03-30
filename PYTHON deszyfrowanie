@@ -1,0 +1,17 @@
+def vigenere_decrypt(text, key):
+    decrypted_text = ""
+    key_length = len(key)
+    for i, char in enumerate(text):
+        if char.isalpha(): 
+            shift = ord(key[i % key_length].lower()) - ord('a')
+            if char.islower():
+                decrypted_text += chr((ord(char) - ord('a') - shift - 1) % 26 + ord('a'))
+            else:
+                decrypted_text += chr((ord(char) - ord('A') - shift - 1) % 26 + ord('A'))
+        else:
+            decrypted_text += char
+    return decrypted_text
+word = input("Podaj słowo do odszyfrowania: ")
+key = "klucz" 
+decrypted_word = vigenere_decrypt(word, key)
+print("Odszyfrowane słowo:", decrypted_word)

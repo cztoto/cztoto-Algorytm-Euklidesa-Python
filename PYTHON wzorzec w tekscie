@@ -1,0 +1,16 @@
+def pattern_search(text, pattern): 
+    matches = [] 
+    pattern_length = len(pattern) 
+    text_length = len(text)
+    for i in range(text_length - pattern_length + 1):
+        if text[i:i + pattern_length] == pattern:
+            matches.append(i)
+    
+    return matches
+text = input("Podaj tekst: ") 
+pattern = input("Podaj wzorzec do wyszukania: ")
+positions = pattern_search(text, pattern)
+if positions: 
+    print("Wzorzec jest na pozycjach:", positions) 
+else: 
+    print("Wzorzec nie jest znaleziony.")
